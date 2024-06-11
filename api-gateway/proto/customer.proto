@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package customer;
+
+option go_package = "/proto";
+
+service CustomerService {
+    rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse);
+    rpc RegisterCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+    rpc LoginCustomer(LoginCustomerRequest) returns (LoginCustomerResponse);
+}
+
+message GetCustomerRequest {
+    string customer_id = 1;
+}
+
+message GetCustomerResponse {
+    string customer_id = 1;
+    string name = 2;
+    string email = 3;
+    string created_at = 4;
+}
+
+message CreateCustomerRequest {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message CreateCustomerResponse {
+    string customer_id = 1;
+    string created_at = 2;
+}
+
+message LoginCustomerRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginCustomerResponse {
+    string token =1;
+}

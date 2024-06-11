@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package paymentmethod;
+
+option go_package = "/proto";
+
+service PaymentMethodService {
+    rpc GetPaymentMethod(GetPaymentMethodRequest) returns (GetPaymentMethodResponse);
+    rpc GetPaymentMethodById(GetPaymentMethodByIdRequest) returns (GetPaymentMethodResponse);
+    rpc CreatePaymentMethod(CreatePaymentMethodRequest) returns (CreatePaymentMethodResponse);
+}
+
+message GetPaymentMethodRequest {
+    string method_name = 1;
+}
+
+message GetPaymentMethodByIdRequest {
+    string id = 1;
+}
+
+message GetPaymentMethodResponse {
+    string id = 1;
+    string method_name = 2;
+}
+
+message CreatePaymentMethodRequest {
+    string method_name = 1;
+}
+
+message CreatePaymentMethodResponse {
+    string payment_method_id = 1;
+    string method_name = 2;
+}
